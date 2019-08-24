@@ -17,16 +17,6 @@ class ProductController extends Controller
 {
   protected $slugifier;
 
-  protected function getByIdOrSlug($id) {
-    $product = null;
-    if (is_numeric($id)) $product = Product::find($id);
-    else $product = Product::select()->where('slug','=',$id)->first();
-    if (!$product) {
-      throw new ProductNotFoundException("Product not found: $id",0xf0fd140f44);
-    }
-    return $product;
-  }
-
   public function __construct(Slugifier $slugifier) {
     $this->slugifier = $slugifier;
   }
@@ -79,12 +69,12 @@ class ProductController extends Controller
   
   public function show($id)
   {
-    return $this->getByIdOrSlug($id);
+    return Product::findByIdOrSlug($id);
   }
   
   public function update(UpdateProductRequest $request, $id)
   {
-    $product = $this->getByIdOrSlug($id);
+    $product = Product::findByIdOrSlug($id);
 
     $product->name        = $request->input('name',$product->name);
     $product->slug        = $request->input('slug',$product->slug);
@@ -112,12 +102,12 @@ class ProductController extends Controller
   
   public function destroy($id)
   {
-    $product = $this->getByIdOrSlug($id);
+    $product = Product::findByIdOrSlug($id);
     $product->delete();
   }
 
   public function hit($id) {
-    $product = $this->getByIdOrSlug($id);
+    $product = Product::findByIdOrSlug($id);
     $product->hit++;
     $product->save();
   }
