@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductPrdcatsTable extends Migration
+class CreateProductAttributesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateProductPrdcatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_prdcats', function (Blueprint $table) {
+        Schema::create('product_attributes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('product_id',false,true)->default(0);
-            $table->integer('category_id',false,true)->default(0);
-            $table->timestamps();
 
-            $table->unique(['product_id','category_id']);
+            $table->integer('product_id',false,true)->default(0);
+            $table->string('name',128);
+            $table->string('value',128);
+            $table->timestamps();
+            
             $table->foreign('product_id')
-              ->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('category_id')
-              ->references('id')->on('product_categories')->onDelete('cascade');
+              ->references('id')
+              ->on('products')
+              ->onDelete('cascade');
         });
     }
 
@@ -34,6 +35,6 @@ class CreateProductPrdcatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_prdcats');
+        Schema::dropIfExists('product_attributes');
     }
 }
