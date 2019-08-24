@@ -5,16 +5,15 @@ namespace Marcohern\Products\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Marcohern\Products\Http\Requests\IndexProductRequest;
+use Marcohern\Products\Http\Requests\CreateProductRequest;
+use Marcohern\Products\Http\Requests\UpdateProductRequest;
+
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(IndexProductRequest $request)
     {
-        //
+      
     }
 
     /**
