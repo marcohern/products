@@ -21,7 +21,7 @@ class CreateProductCategoriesTable extends Migration
             $table->string('type')->default('category');
             $table->integer('ord')->default(0);
             $table->integer('lvl')->default(0);
-            $table->string('description');
+            $table->text('description');
 
             $table->integer('hits')->default(0);
             $table->integer('clicks')->default(0);
