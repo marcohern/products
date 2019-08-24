@@ -38,7 +38,7 @@ class ProductController extends Controller
     $product = new Product;
     $product->name = $request->name;
     $product->slug = $request->input('slug',
-      $this->slugifier->store($request->name,'products')['slug']
+      $this->slugifier->storeSlug($request->name,'products')
     );
     $product->overview = $request->overview;
     $product->description = $request->description;
@@ -67,7 +67,7 @@ class ProductController extends Controller
     ];
   }
   
-  public function show(string $id)
+  public function show($id)
   {
     $product = null;
     if (is_numeric($id)) $product = Product::find($id);
@@ -78,7 +78,7 @@ class ProductController extends Controller
     return $product;
   }
   
-  public function update(UpdateProductRequest $request, string $id)
+  public function update(UpdateProductRequest $request, $id)
   {
     $product = null;
     if (is_numeric($id)) $product = Product::find($id);
@@ -111,7 +111,7 @@ class ProductController extends Controller
     $product->save();
   }
   
-  public function destroy(string $id)
+  public function destroy($id)
   {
     $product = null;
     if (is_numeric($id)) $product = Product::find($id);
