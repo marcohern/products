@@ -21,7 +21,7 @@ class ProductsProvider extends ServiceProvider {
           //"$basePath/publishables/config/slugifier.php" => config_path('slugifier.php')
       ],
       'migrations' => [
-        //"$basePath/publishables/migrations" => database_path('migrations')
+        "$basePath/publishables/migrations" => database_path('migrations')
       ],
     ];
 
