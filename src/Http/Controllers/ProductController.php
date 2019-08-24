@@ -64,7 +64,7 @@ class ProductController extends Controller
       if (is_numeric($id)) $product = Product::find($id);
       else $product = Product::select()->where('slug','=',$id)->first();
       if (!$product) {
-        throw new ProductNotFoundException("Product not found: $id");
+        throw new ProductNotFoundException("Product not found: $id",0xf0fd140f44);
       }
       return $product;
     }
@@ -75,7 +75,7 @@ class ProductController extends Controller
       if (is_numeric($id)) $product = Product::find($id);
       else $product = Product::select()->where('slug','=',$id)->first();
       if (!$product) {
-        throw new ProductNotFoundException("Product not found: $id");
+        throw new ProductNotFoundException("Product not found: $id",0x931ee91869);
       }
 
       $product->name        = $request->input('name',$product->name);
@@ -101,15 +101,15 @@ class ProductController extends Controller
       $product->rating_value = $request->input('rating_value', $product->rating_value);
       $product->save();
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    
+    public function destroy(string $id)
     {
-        //
+      $product = null;
+      if (is_numeric($id)) $product = Product::find($id);
+      else $product = Product::select()->where('slug','=',$id)->first();
+      if (!$product) {
+        throw new ProductNotFoundException("Product not found: $id",0x7dbd484686);
+      }
+      $product->delete();
     }
 }
