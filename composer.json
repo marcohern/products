@@ -1,0 +1,24 @@
+{
+    "name": "marcohern/products",
+    "description": "Product Management for Laravel",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Marco Hernandez",
+            "email": "marcohern@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+      "psr-4": {
+        "Marcohern\\Products\\": "src/"
+      }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Marcohern\\Products\\ProductsProvider"
+            ]
+        }
+    }
+}
