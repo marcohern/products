@@ -111,4 +111,17 @@ class ProductController extends Controller
     $product->hit++;
     $product->save();
   }
+
+  public function click($id) {
+    $product = Product::findByIdOrSlug($id);
+    $product->clicks++;
+    $product->save();
+  }
+
+  public function rate($id) {
+    $product = Product::findByIdOrSlug($id);
+    $product->rating_count++;
+    $product->rating_value += 4.0;
+    $product->save();
+  }
 }
