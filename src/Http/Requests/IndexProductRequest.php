@@ -24,7 +24,9 @@ class IndexProductRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+          'q' => 'string|max:255',
+          'page' => 'integer',
+          'rpp' => 'integer'
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Marcohern\Products;
 
 use Illuminate\Database\Eloquent\Model;
 
