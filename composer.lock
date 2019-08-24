@@ -1,0 +1,55 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "d6ade3d2679cbd5b9cca3a5f2a847ba1",
+    "packages": [
+        {
+            "name": "marcohern/slugifier",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/marcohern/slugifier.git",
+                "reference": "9646ee1a497d2d2812e47c7500f3d21c24e8588a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/marcohern/slugifier/zipball/9646ee1a497d2d2812e47c7500f3d21c24e8588a",
+                "reference": "9646ee1a497d2d2812e47c7500f3d21c24e8588a",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tests\\": "tests/",
+                    "Marcohern\\Dimages\\": "src/"
+                },
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Marco Hernandez",
+                    "email": "marcohern@gmail.com"
+                }
+            ],
+            "description": "Slugify your life",
+            "time": "2019-07-28T20:26:38+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

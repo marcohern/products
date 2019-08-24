@@ -68,17 +68,38 @@ class ProductController extends Controller
       }
       return $product;
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    
+    public function update(UpdateProductRequest $request, string $id)
     {
-        //
+      $product = null;
+      if (is_numeric($id)) $product = Product::find($id);
+      else $product = Product::select()->where('slug','=',$id)->first();
+      if (!$product) {
+        throw new ProductNotFoundException("Product not found: $id");
+      }
+
+      $product->name        = $request->input('name',$product->name);
+      $product->slug        = $request->input('slug',$product->slug);
+      $product->overview    = $request->input('overview',$product->overview);
+      $product->description = $request->input('description',$product->description);
+      $product->org_price   = $request->input('org_price',$product->org_price);
+
+      $product->dct_price = $request->input('dct_price',$product->dct_price);
+      $product->qty       = $request->input('qty', $product->qty);
+
+      $product->visible   = $request->input('visible', $product->visible);
+      $product->hot       = $request->input('hot', $product->hot);
+      $product->hot_until = $request->input('hot_until', $product->hot_until);
+      $product->featured  = $request->input('featured', $product->featured);
+      $product->parent_id = $request->input('parent_id', $product->parent_id);
+
+      $product->hits         = $request->input('hits', $product->hits);
+      $product->clicks       = $request->input('clicks', $product->clicks);
+      $product->sales_count  = $request->input('sales_count', $product->sales_count);
+      $product->sales_value  = $request->input('sales_value', $product->sales_value);
+      $product->rating_count = $request->input('rating_count', $product->rating_count);
+      $product->rating_value = $request->input('rating_value', $product->rating_value);
+      $product->save();
     }
 
     /**

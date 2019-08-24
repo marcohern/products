@@ -8,7 +8,9 @@
             "email": "marcohern@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "marcohern/slugifier": "^1.0"
+    },
     "autoload": {
       "psr-4": {
         "Marcohern\\Products\\": "src/"
