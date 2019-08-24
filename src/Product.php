@@ -10,10 +10,17 @@ class Product extends Model
 {
   public static function findByIdOrSlug($id) : Product {
     $product = null;
-    if (is_numeric($id)) $product = self::find($id);
-    else $product = self::select()->where('slug','=',$id)->first();
+    $type = null;
+    if (is_numeric($id)) {
+      $product = self::find($id);
+      $type = 'id';
+    }
+    else {
+      $product = self::select()->where('slug','=',$id)->first();
+      $type = 'slug';
+    }
     if (!$product) {
-      throw new ProductNotFoundException("Product not found: $id",0xf0fd140f44);
+      throw new ProductNotFoundException("Product not found. $type '$id'",0xf0fd140f44);
     }
     return $product;
   }

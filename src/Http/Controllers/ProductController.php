@@ -10,6 +10,7 @@ use Marcohern\Products\Product;
 use Marcohern\Products\Http\Requests\IndexProductRequest;
 use Marcohern\Products\Http\Requests\CreateProductRequest;
 use Marcohern\Products\Http\Requests\UpdateProductRequest;
+use Marcohern\Products\Http\Requests\RateRequest;
 
 use Marcohern\Products\Exceptions\ProductNotFoundException;
 
@@ -108,7 +109,7 @@ class ProductController extends Controller
 
   public function hit($id) {
     $product = Product::findByIdOrSlug($id);
-    $product->hit++;
+    $product->hits++;
     $product->save();
   }
 
@@ -118,10 +119,17 @@ class ProductController extends Controller
     $product->save();
   }
 
-  public function rate($id) {
+  public function sale(RateRequest $request, $id) {
+    $product = Product::findByIdOrSlug($id);
+    $product->sales_count++;
+    $product->sales_value += $request->value;
+    $product->save();
+  }
+
+  public function rate(RateRequest $request, $id) {
     $product = Product::findByIdOrSlug($id);
     $product->rating_count++;
-    $product->rating_value += 4.0;
+    $product->rating_value += $request->value;
     $product->save();
   }
 }
