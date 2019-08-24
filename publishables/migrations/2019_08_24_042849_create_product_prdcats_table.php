@@ -15,8 +15,8 @@ class CreateProductPrdcatsTable extends Migration
     {
         Schema::create('product_prdcats', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('product_id',false,true)->default(0);
-            $table->integer('category_id',false,true)->default(0);
+            $table->bigInteger('product_id',false,true)->default(0);
+            $table->bigInteger('category_id',false,true)->default(0);
             $table->timestamps();
 
             $table->unique(['product_id','category_id']);
