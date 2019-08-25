@@ -36,7 +36,7 @@ class CreateProductRequest extends FormRequest
           'hot'       => 'boolean',
           'hot_until' => 'date',
           'featured'  => 'boolean',
-          'parent_id' => 'integer',
+          'parent_id' => 'integer|min:0',
 
           'hits' => 'integer|min:0',
           'clicks' => 'integer|min:0',
