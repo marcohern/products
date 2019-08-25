@@ -8,6 +8,14 @@ use Marcohern\Products\Exceptions\ProductNotFoundException;
 
 class Product extends Model
 {
+  public function categories() {
+    return $this->belongsToMany(
+      ProductCategory::class,
+      'product_prdcats',
+      'product_id',
+      'category_id');
+  }
+
   public static function findByIdOrSlug($id) : Product {
     $product = null;
     $type = null;
