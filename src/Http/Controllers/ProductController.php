@@ -27,7 +27,7 @@ class ProductController extends Controller
     $q = $request->input('q','');
     $rpp = $request->input('rpp', 10);
 
-    $query = Product::select()->where('visible','=',true);
+    $query = Product::index()->where('visible','=',true);
     if (!empty($q)) {
       $query->where('name','LIKE',"%$q%");
     }

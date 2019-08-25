@@ -16,6 +16,14 @@ class Product extends Model
       'category_id');
   }
 
+  public static function index() {
+    return self::select([
+      'id','name','slug','org_price','dct_price','qty',
+      'visible','hot','hot_until','featured','parent_id',
+      'hits','clicks','rating_count','rating_value'
+    ]);
+  }
+
   public static function findByIdOrSlug($id) : Product {
     $product = null;
     $type = null;
